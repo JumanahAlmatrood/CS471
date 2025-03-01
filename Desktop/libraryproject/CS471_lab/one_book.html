@@ -1,0 +1,17 @@
+{% extends "bookmodule/layouts/base.html" %}  
+
+{% block title %}Book Details - My Website{% endblock title %} 
+
+{% block content %} 
+
+    <a href="{% url 'books.list_books' %}">Go Back</a>
+
+    <h1>Details of Book1</h1>
+    <h2>Internet & World Wide Web How to Program</h2>
+    <h2>Author: Author Name</h2>
+
+    <p><strong>Internet & World Wide Web How to Program, 5/e</strong> provides an introduction to web programming.</p>
+
+    <img src="{% static 'bookmodule/book1.jpg' %}" alt="Book1 img desc" width="200" height="200">
+
+{% endblock content %}

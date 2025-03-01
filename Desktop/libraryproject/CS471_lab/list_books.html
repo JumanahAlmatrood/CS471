@@ -1,0 +1,38 @@
+{% extends "bookmodule/layouts/base.html" %}  
+
+{% block title %}List of Books - My Website{% endblock title %}  
+
+{% block content %}  
+
+    <style>  /* CSS داخلية */
+        h1 {
+            color: green;
+        }
+        h2 {
+            color: lightskyblue;
+        }
+        p {
+            font-family: Verdana, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+
+    <h1>List of Books</h1>
+    
+    <a href="{% url 'books.view_one_book' bookId=1 %}">
+        <h2>Internet & World Wide Web How to Program</h2>
+    </a>
+    <a href="{% url 'books.view_one_book' bookId=1 %}">
+        <img src="{% static 'bookmodule/book1.jpg' %}" alt="Book1 img desc" width="200" height="200">
+    </a>
+    <hr>
+
+    <h2>2) C++ How to Program, Late Objects Version</h2>
+    <img src="{% static 'bookmodule/book2.jpg' %}" alt="Book2 img desc" width="200" height="200">
+    <hr>
+
+    <h2>3) Images in Another Folder</h2>
+    <img src="{% static 'bookmodule/book3.jpg' %}" alt="Book3 img desc" width="200" height="200">
+    <hr>
+
+{% endblock content %}
