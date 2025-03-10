@@ -4,6 +4,52 @@ from django.http import HttpResponse, HttpResponseBadRequest
 
 from django.shortcuts import render
 
+
+
+def html5_links(request):#task 1
+    return render(request, "bookmodule/links.html")
+
+def formatting_page(request):# task 2
+    return render(request, "bookmodule/formatting.html")
+
+def listing_page(request): # task 3
+    return render(request, "bookmodule/listing.html")
+
+def tables_page(request):# task 4
+    return render(request, "bookmodule/tables.html")
+
+from django.shortcuts import render
+
+def __getBooksList():
+    book1 = {'id': 12344321, 'title': 'Continuous Delivery', 'author': 'J. Humble and D. Farley'}
+    book2 = {'id': 56788765, 'title': 'Reversing: Secrets of Reverse Engineering', 'author': 'E. Eilam'}
+    book3 = {'id': 43211234, 'title': 'The Hundred-Page Machine Learning Book', 'author': 'Andriy Burkov'}
+    return [book1, book2, book3]
+
+def search(request):
+    if request.method =="GET":
+        return render(request, 'bookmodule/bookList.html')
+    if request.method == "POST":
+        string = request.POST.get('keyword', '').lower()
+        isTitle = request.POST.get('option1')
+        isAuthor = request.POST.get('option2')
+        newBooks =[]
+
+        books = __getBooksList()
+
+        for item in books:
+            contained = False
+            if isTitle and string in item['title'].lower():
+                contained = True
+            if not contained and isAuthor and string in item['author'].lower():
+                contained = True
+            
+            if contained:
+                newBooks.append(item)
+
+    return render(request, 'bookmodule/bookList.html', {'books': newBooks})
+
+
 def index(request):
     return render(request, "bookmodule/index.html")
 
